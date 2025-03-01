@@ -1,0 +1,285 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// Enums for reusable options
+enum Role {
+  ADMIN
+  CHAPTER_LEADER
+  CLUB_LEADER
+  MEMBER
+}
+
+enum EventType {
+  CLUB_EVENT
+  CHAPTER_EVENT
+  SPECIAL_EVENT
+  VIRTUAL_EVENT
+}
+
+enum MembershipTier {
+  FREE
+  GOLD
+  VIP
+}
+
+enum ReferralStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  COMPLETED
+}
+
+// Core Models
+model User {
+  id              String          @id @default(uuid())
+  email           String          @unique
+  password        String?
+  role            Role            @default(MEMBER)
+  personalDetails PersonalDetails @relation(fields: [personalDetailsId], references: [id])
+  personalDetailsId String @unique
+  businessDetails BusinessDetails?
+  memberships     Membership[]
+  sentReferrals   Referral[]      @relation("SentReferrals")
+  receivedReferrals Referral[]    @relation("ReceivedReferrals")
+  clubAccess      ClubAccess[]
+  clubLeaders     Club[]         @relation("ClubLeader")
+  clubMembers     Club[]         @relation("ClubMembers")
+  chapterLeaders  Chapter[]     @relation("ChapterLeaders")
+  sentMessages    Message[]       @relation("SentMessages") // Relation for sent messages
+  receivedMessages Message[]      @relation("ReceivedMessages") // Relation for received messages
+  notifications   Notification[]
+  rsvps           RSVP[]
+  attendances     Attendance[]
+  payments        Payment[]
+  forumThreads    ForumThread[]
+  forumComments   ForumComment[]
+  announcements   Announcement[]
+  createdAt       DateTime        @default(now())
+}
+
+model PersonalDetails {
+  id          String   @id @default(uuid())
+  firstName   String
+  lastName    String
+  phone       String
+  address     Json?    // { street, city, state, zip }
+  userId      String   @unique
+  user        User?
+}
+
+model BusinessDetails {
+  id          String   @id @default(uuid())
+  businessName String
+  category    String
+  panNumber   String?  @unique
+  gstNumber   String?  @unique
+  verified    Boolean  @default(false)
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @unique
+}
+
+// Chapter/Club Structure
+model Chapter {
+  id          String   @id @default(uuid())
+  name        String
+  location    String
+  clubs       Club[]
+  leaders     User[]   @relation("ChapterLeaders")
+  events      Event[]
+  forumThreads ForumThread[]
+  announcements Announcement[]
+  createdAt   DateTime @default(now())
+  clubAccess  ClubAccess[]
+}
+
+model Club {
+  id          String   @id @default(uuid())
+  name        String
+  forumThreads ForumThread[]
+  chapter     Chapter  @relation(fields: [chapterId], references: [id])
+  chapterId   String
+  leader      User     @relation("ClubLeader", fields: [leaderId], references: [id])
+  leaderId    String
+  members     User[]   @relation("ClubMembers")
+  events      Event[]
+  clubAccess  ClubAccess[]
+  announcements Announcement[]
+  createdAt   DateTime @default(now())
+}
+
+// Membership System
+model Membership {
+  id          String        @id @default(uuid())
+  tier        MembershipTier @default(FREE)
+  user        User          @relation(fields: [userId], references: [id])
+  userId      String
+  startDate   DateTime
+  endDate     DateTime
+  payments    Payment[]
+  createdAt   DateTime      @default(now())
+}
+
+model ClubAccess {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  club        Club     @relation(fields: [clubId], references: [id])
+  clubId      String
+  chapter     Chapter? @relation(fields: [chapterId], references: [id]) // Add Chapter reference
+  chapterId   String?
+  grantedAt   DateTime @default(now())
+}
+
+// Referral System (Core Feature)
+model Referral {
+  id          String          @id @default(uuid())
+  fromUser    User            @relation("SentReferrals", fields: [fromUserId], references: [id])
+  fromUserId  String
+  toUser      User            @relation("ReceivedReferrals", fields: [toUserId], references: [id])
+  toUserId    String
+  description String
+  status      ReferralStatus  @default(PENDING)
+  successStory SuccessStory?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model SuccessStory {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  referral    Referral @relation(fields: [referralId], references: [id])
+  referralId  String   @unique
+  createdAt   DateTime @default(now())
+}
+
+// Event System
+model Event {
+  id          String      @id @default(uuid())
+  title       String
+  type        EventType
+  description String
+  startTime   DateTime
+  endTime     DateTime
+  location    String?     // Physical location
+  virtualLink String?     // For virtual events
+  chapter     Chapter?    @relation(fields: [chapterId], references: [id])
+  chapterId   String?
+  club        Club?       @relation(fields: [clubId], references: [id])
+  clubId      String?
+  rsvps       RSVP[]
+  attendees   Attendance[]
+  createdAt   DateTime    @default(now())
+}
+
+model RSVP {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  event       Event    @relation(fields: [eventId], references: [id])
+  eventId     String
+  status      String   @default("PENDING") // YES/NO/MAYBE
+  createdAt   DateTime @default(now())
+}
+
+model Attendance {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  event       Event    @relation(fields: [eventId], references: [id])
+  eventId     String
+  attendedAt  DateTime @default(now())
+}
+
+// Payment System
+model Payment {
+  id            String   @id @default(uuid())
+  amount        Float
+  transactionId String   @unique // PhonePe transaction ID
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  membership    Membership? @relation(fields: [membershipId], references: [id])
+  membershipId  String?
+  createdAt     DateTime @default(now())
+}
+
+// Communication System
+model Message {
+  id          String   @id @default(uuid())
+  content     String
+  sender      User     @relation("SentMessages", fields: [senderId], references: [id])
+  senderId    String
+  receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  receiverId  String
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Announcement {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  author      User     @relation(fields: [authorId], references: [id]) // Added author relation
+  authorId    String
+  chapter     Chapter? @relation(fields: [chapterId], references: [id])
+  chapterId   String?
+  club        Club?    @relation(fields: [clubId], references: [id])
+  clubId      String?
+  createdAt   DateTime @default(now())
+}
+
+model ForumThread {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+  chapter     Chapter? @relation(fields: [chapterId], references: [id])
+  chapterId   String?
+  club        Club?    @relation(fields: [clubId], references: [id])
+  clubId      String?
+  comments    ForumComment[]
+  createdAt   DateTime @default(now())
+}
+
+model ForumComment {
+  id          String      @id @default(uuid())
+  content     String
+  author      User        @relation(fields: [authorId], references: [id])
+  authorId    String
+  thread      ForumThread @relation(fields: [threadId], references: [id])
+  threadId    String
+  createdAt   DateTime    @default(now())
+}
+
+// Analytics System
+model AnalyticsSnapshot {
+  id          String   @id @default(uuid())
+  type        String   // USER/BUSINESS/CHAPTER/CLUB
+  metrics     Json     // Stores key metrics as key-value pairs
+  recordedAt  DateTime @default(now())
+}
+
+// Notification System
+model Notification {
+  id          String   @id @default(uuid())
+  type        String   // REFERRAL/EVENT/PAYMENT etc
+  content     String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
