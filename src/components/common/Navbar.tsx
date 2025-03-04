@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
-import { MdEmail } from "react-icons/md"; // Importing email icon
+import { MdEmail } from "react-icons/md";
 
 export default function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);

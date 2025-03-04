@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function Hero() {
 	return (
 		<section className="relative w-full h-screen flex items-center justify-center text-center text-white pt-20">
-			{/* Background Image */}
 			<div
 				className="absolute inset-0 bg-cover bg-center"
 				style={{ backgroundImage: "url('/herobc.webp')" }}>
@@ -26,7 +25,6 @@ export default function Hero() {
 					valuable connections, exchange referrals, and grow your business.
 				</p>
 
-				{/* CTA Buttons */}
 				<div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
 					<Link href="/invite">
 						<button className="px-12 py-3 bg-red-600 text-white font-medium rounded-2xl transition-all duration-300 hover:bg-red-700">

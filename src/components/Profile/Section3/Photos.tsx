@@ -8,7 +8,7 @@ export default function Photos() {
 			<div className="flex items-center justify-center space-x-2">
 				<FiChevronLeft className="text-gray-500 cursor-pointer text-lg" />
 				<Image
-					src="/path-to-your-image.jpg"
+					src="/logo.png"
 					alt="Gallery"
 					className="w-16 h-16 object-cover rounded-lg"
 					height={64}

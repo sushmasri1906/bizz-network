@@ -20,10 +20,11 @@ const ProfileHeader = () => {
 			<div className="bg-white h-[530px] shadow-md rounded-xl p-6 w-full">
 				<div className="relative mx-auto w-24 h-24 rounded-full border-4 border-gray-300 overflow-hidden">
 					<Image
-						src="/profile.jpg"
+						src="/logo.png"
 						alt="Profile"
-						layout="fill"
-						objectFit="cover"
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						style={{ objectFit: "cover" }}
 					/>
 				</div>
 
