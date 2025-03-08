@@ -1,20 +1,22 @@
 export default function TermsAndConditions() {
 	return (
-		<div>
-			<h1>Terms & Conditions</h1>
-			<p>Last updated on 04-03-2025 12:50:18</p>
-			<hr />
+		<div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-12">
+			<h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
+				Terms &amp; Conditions
+			</h1>
+			<p className="text-gray-500 text-center">
+				Last updated on 04-03-2025 12:50:18
+			</p>
+			<hr className="my-4" />
 
-			<p>
+			<p className="text-gray-700 leading-relaxed">
 				These Terms and Conditions, along with the Privacy Policy or other terms
-				(“Terms”) constitute a binding agreement by and between{" "}
-				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong>
-				(“Website Owner” or “we” or “us” or “our”) and you (“you” or “your”) and
-				relate to your use of our website, goods, or services (collectively,
-				“Services”).
+				(&ldquo;Terms&rdquo;) constitute a binding agreement by and between{" "}
+				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> (&ldquo;we&rdquo;) and
+				you and relate to your use of our website, goods, or services.
 			</p>
 
-			<p>
+			<p className="text-gray-700 leading-relaxed mt-4">
 				By using our website and availing the Services, you agree that you have
 				read and accepted these Terms (including the Privacy Policy). We reserve
 				the right to modify these Terms at any time without assigning any
@@ -22,8 +24,11 @@ export default function TermsAndConditions() {
 				stay informed of updates.
 			</p>
 
-			<h2>Terms of Use</h2>
-			<ul>
+			<h2 className="text-2xl font-semibold text-gray-800 mt-6 mb-3">
+				Terms of Use
+			</h2>
+
+			<ul className="list-disc list-inside text-gray-700 space-y-3">
 				<li>
 					You agree to provide true, accurate, and complete information during
 					and after registration, and you shall be responsible for all acts done
@@ -87,7 +92,9 @@ export default function TermsAndConditions() {
 				</li>
 			</ul>
 
-			<p>If you have any questions, please contact our support team.</p>
+			<p className="text-gray-700 mt-6">
+				If you have any questions, please contact our support team.
+			</p>
 		</div>
 	);
 }

@@ -1,53 +1,51 @@
 export default function CancellationRefund() {
 	return (
-		<div>
-			<h1>Cancellation & Refund Policy</h1>
-			<p>Last updated on 04-03-2025 12:51:45</p>
-			<hr />
+		<div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-16">
+			<h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
+				Cancellation &amp; Refund Policy
+			</h1>
+			<p className="text-gray-500 text-center">
+				Last updated on 04-03-2025 12:51:45
+			</p>
+			<hr className="my-4" />
 
-			<p>
+			<p className="text-gray-700 leading-relaxed">
 				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> believes in helping
 				its customers as far as possible and has a liberal cancellation policy.
 				Under this policy:
 			</p>
 
-			<ul>
+			<ul className="list-disc list-inside text-gray-700 space-y-3 mt-4">
 				<li>
 					Cancellations will be considered only if the request is made
-					immediately after placing the order. However, the cancellation request
-					may not be entertained if the orders have been communicated to the
-					vendors/merchants and they have initiated the process of shipping
-					them.
+					immediately after placing the order. However, if the order is already
+					processed for shipping, cancellation may not be possible.
 				</li>
 				<li>
-					BIZ LINK NETWORK PRIVATE LIMITED does not accept cancellation requests
-					for perishable items like flowers, eatables, etc. However,
-					refund/replacement can be made if the customer establishes that the
-					quality of the product delivered is not good.
+					Cancellation requests for perishable items like flowers or eatables
+					are not accepted. However, if the product quality is unsatisfactory, a
+					refund or replacement may be possible upon verification.
 				</li>
 				<li>
-					In case of receipt of damaged or defective items, please report the
-					same to our Customer Service team. The request will, however, be
-					entertained once the merchant has checked and determined the same at
-					his own end. This should be reported within the same day of receipt of
-					the products. If you feel that the product received is not as shown on
-					the site or as per your expectations, you must bring it to the notice
-					of our customer service within the same day of receiving the product.
-					The Customer Service Team, after reviewing your complaint, will take
-					an appropriate decision.
+					If you receive a damaged or defective item, report it to our Customer
+					Service team within the same day. Once verified, we will determine the
+					next steps for resolution.
 				</li>
 				<li>
-					In case of complaints regarding products that come with a warranty
-					from manufacturers, please refer the issue to them.
+					If the received product does not match its description or your
+					expectations, notify our customer service within the same day of
+					receiving it. Our team will review and take an appropriate decision.
 				</li>
 				<li>
-					In case of any refunds approved by{" "}
-					<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong>, it will take 6-8
-					days for the refund to be processed to the end customer.
+					For products with a manufacturer&apos;s warranty, please refer the
+					issue directly to the manufacturer.
 				</li>
+				<li>Approved refunds will be processed within 6-8 business days.</li>
 			</ul>
 
-			<p>If you have any questions, feel free to contact our support team.</p>
+			<p className="text-gray-700 mt-6">
+				If you have any questions, feel free to contact our support team.
+			</p>
 		</div>
 	);
 }
