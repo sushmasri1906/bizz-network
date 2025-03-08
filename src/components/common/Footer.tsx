@@ -8,10 +8,10 @@ const Footer = () => {
 			<div className="max-w-6xl mx-auto px-4">
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
 					<div>
-						<h2 className="text-xl font-bold text-white mb-2">HexVibe</h2>
+						<h2 className="text-xl font-bold text-white mb-2">Hello-Bizz</h2>
 						<p className="text-sm">
-							Bringing you the best social media experience, inspired by
-							Instagram.
+							Connecting professionals and businesses for growth, powered by
+							Hello-Bizz B-B Network.
 						</p>
 					</div>
 

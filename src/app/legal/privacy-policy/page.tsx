@@ -8,10 +8,11 @@ export default function PrivacyPolicy() {
 			<hr className="my-4" />
 
 			<p className="text-gray-700 leading-relaxed">
-				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> (“we") respects your
-				privacy and is committed to protecting the personal information you
-				share with us. This Privacy Policy outlines how we collect, use, and
-				protect your data when you visit our website and use our services.
+				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> (&quot;we&quot;)
+				respects your privacy and is committed to protecting the personal
+				information you share with us. This Privacy Policy outlines how we
+				collect, use, and protect your data when you visit our website and use
+				our services.
 			</p>
 
 			<h2 className="text-xl font-semibold mt-6 mb-2 text-gray-800">

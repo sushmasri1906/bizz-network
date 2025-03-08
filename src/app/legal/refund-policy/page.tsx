@@ -2,7 +2,7 @@ export default function CancellationRefund() {
 	return (
 		<div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-16">
 			<h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
-				Cancellation & Refund Policy
+				Cancellation &amp; Refund Policy
 			</h1>
 			<p className="text-gray-500 text-center">
 				Last updated on 04-03-2025 12:51:45
@@ -37,8 +37,8 @@ export default function CancellationRefund() {
 					receiving it. Our team will review and take an appropriate decision.
 				</li>
 				<li>
-					For products with a manufacturer's warranty, please refer the issue
-					directly to the manufacturer.
+					For products with a manufacturer&apos;s warranty, please refer the
+					issue directly to the manufacturer.
 				</li>
 				<li>Approved refunds will be processed within 6-8 business days.</li>
 			</ul>

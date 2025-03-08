@@ -2,7 +2,7 @@ export default function TermsAndConditions() {
 	return (
 		<div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-12">
 			<h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
-				Terms & Conditions
+				Terms &amp; Conditions
 			</h1>
 			<p className="text-gray-500 text-center">
 				Last updated on 04-03-2025 12:50:18
@@ -11,9 +11,9 @@ export default function TermsAndConditions() {
 
 			<p className="text-gray-700 leading-relaxed">
 				These Terms and Conditions, along with the Privacy Policy or other terms
-				(“Terms”) constitute a binding agreement by and between{" "}
-				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> ( “we” ) and you and
-				relate to your use of our website, goods, or services
+				(&ldquo;Terms&rdquo;) constitute a binding agreement by and between{" "}
+				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> (&ldquo;we&rdquo;) and
+				you and relate to your use of our website, goods, or services.
 			</p>
 
 			<p className="text-gray-700 leading-relaxed mt-4">

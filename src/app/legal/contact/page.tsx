@@ -1,11 +1,30 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 
 export default function Contact() {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		message: "",
+	});
+
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		console.log("Form submitted:", formData);
+	};
+
 	return (
 		<div className="max-w-3xl mx-auto p-6 text-gray-800">
 			<h1 className="text-4xl font-bold text-center mb-6">Contact Us</h1>
 			<p className="text-lg text-center mb-6">
-				We’d love to hear from you! Reach out using the details below.
+				We&apos;d love to hear from you! Reach out using the details below.
 			</p>
 
 			<hr className="my-6" />
@@ -31,20 +50,18 @@ export default function Contact() {
 
 				<h3 className="text-xl font-medium mt-4">Phone</h3>
 				<p>
-					📞
-					<Link
-						href="tel:+918096053819"
-						className="text-blue-600 hover:underline">
-						8096053819
+					&#x1F4DE;{" "}
+					<Link href="tel:+918096053819" className="text-blue-500 underline">
+						+91 8096053819
 					</Link>
 				</p>
 
 				<h3 className="text-xl font-medium mt-4">Email</h3>
 				<p>
-					📧
+					&#x2709;{" "}
 					<Link
 						href="mailto:infojaaaga@gmail.com"
-						className="text-blue-600 hover:underline">
+						className="text-blue-500 underline">
 						infojaaaga@gmail.com
 					</Link>
 				</p>
@@ -58,7 +75,7 @@ export default function Contact() {
 
 			<section>
 				<h2 className="text-2xl font-semibold mb-4">Send Us a Message</h2>
-				<form className="space-y-4">
+				<form onSubmit={handleSubmit} className="space-y-4">
 					<div>
 						<label htmlFor="name" className="block font-medium">
 							Your Name:
@@ -67,6 +84,8 @@ export default function Contact() {
 							type="text"
 							id="name"
 							name="name"
+							value={formData.name}
+							onChange={handleChange}
 							required
 							className="w-full p-2 border border-gray-300 rounded-md"
 						/>
@@ -80,6 +99,8 @@ export default function Contact() {
 							type="email"
 							id="email"
 							name="email"
+							value={formData.email}
+							onChange={handleChange}
 							required
 							className="w-full p-2 border border-gray-300 rounded-md"
 						/>
@@ -92,13 +113,15 @@ export default function Contact() {
 						<textarea
 							id="message"
 							name="message"
+							value={formData.message}
+							onChange={handleChange}
 							required
 							className="w-full p-2 border border-gray-300 rounded-md h-24"></textarea>
 					</div>
 
 					<button
 						type="submit"
-						className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+						className="bg-blue-500 text-white px-4 py-2 rounded-md">
 						Send Message
 					</button>
 				</form>
