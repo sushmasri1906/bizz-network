@@ -21,7 +21,7 @@ export default function Contact() {
 	};
 
 	return (
-		<div className="max-w-3xl mx-auto p-6 text-gray-800">
+		<div className="max-w-3xl mx-auto p-6 text-gray-800 mb-36">
 			<h1 className="text-4xl font-bold text-center mb-6">Contact Us</h1>
 			<p className="text-lg text-center mb-6">
 				We&apos;d love to hear from you! Reach out using the details below.

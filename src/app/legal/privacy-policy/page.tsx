@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
 	return (
-		<div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-20">
+		<div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg m-28">
 			<h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
 				Privacy Policy
 			</h1>
@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
 			<hr className="my-4" />
 
 			<p className="text-gray-700 leading-relaxed">
-				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong> (&quot;we&quot;)
+				<strong>BIZ LINK NETWORK PRIVATE LIMITED</strong>
 				respects your privacy and is committed to protecting the personal
 				information you share with us. This Privacy Policy outlines how we
 				collect, use, and protect your data when you visit our website and use
