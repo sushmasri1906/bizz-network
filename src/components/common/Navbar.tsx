@@ -49,10 +49,10 @@ export default function Navbar() {
 
 				<div className="hidden md:flex items-center space-x-4 px-3">
 					<Link
-						href="mailto:support@bizzconnect.com"
+						href="mailto:support@bizzn.com"
 						className="flex items-center text-red-600 font-semibold no-underline">
 						<MdEmail size={20} className="mr-1" />
-						support@bizzconnect.com
+						support@bizzn.com
 					</Link>
 					<Link href="/invite">
 						<button className="px-4 py-1 text-white bg-red-600 rounded-2xl transition-all duration-300 hover:bg-white hover:text-red-600 border-2 border-red-600">
