@@ -1,16 +1,14 @@
 import React from "react";
 import Hero from "./Hero";
-import WhyJoinUs from "./WhyJoinUs";
-import ProfilePage from "../Profile/ProfilePage";
-import Signin from "../auth/SignIn";
+// import WhyJoinUs from "./WhyJoinUs";
+// import ProfilePage from "../Profile/ProfilePage";
 
 function Homepage() {
 	return (
 		<>
 			<Hero />
-			<WhyJoinUs />
-			<ProfilePage />
-			<Signin />
+			{/* <WhyJoinUs /> */}
+			{/* <ProfilePage /> */}
 		</>
 	);
 }
