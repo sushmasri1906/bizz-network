@@ -22,7 +22,7 @@ export default function Services() {
 
 	const services = [
 		{
-			title: "Unique Business Category in Chapters",
+			title: "Unique Category ",
 			description: "Stand out with exclusive classification.",
 			icon: <FaBriefcase size={40} className="text-red-600" />,
 		},
@@ -30,42 +30,42 @@ export default function Services() {
 			title: "Local Networking Access",
 			description:
 				"Grow your business through pitch clubs and networking events.",
-			icon: <FaHandshake size={40} className="text-blue-600" />,
+			icon: <FaHandshake size={40} className="text-red-600" />,
 		},
 		{
 			title: "Unlimited OPEN Network",
 			description: "Expand your opportunities beyond boundaries.",
-			icon: <FaGlobe size={40} className="text-green-600" />,
+			icon: <FaGlobe size={40} className="text-red-600" />,
 		},
 		{
-			title: "Power Networks Access",
+			title: "Power Teams Network",
 			description: "Connect with high-value professionals in your industry.",
-			icon: <FaUsers size={40} className="text-purple-600" />,
+			icon: <FaUsers size={40} className="text-red-600" />,
 		},
 		{
-			title: "Women's Networking Platform",
+			title: "Women's Network",
 			description: "Exclusive networking space for women entrepreneurs.",
-			icon: <FaFemale size={40} className="text-pink-600" />,
+			icon: <FaFemale size={40} className="text-red-600" />,
 		},
 		{
-			title: "Community Support & Engagement",
+			title: "Community Network",
 			description: "Stay connected with your local business community.",
-			icon: <FaUsers size={40} className="text-yellow-600" />,
+			icon: <FaUsers size={40} className="text-red-600" />,
 		},
 		{
 			title: "B2C Lead Generation",
 			description: "Engage potential customers through carnivals and events.",
-			icon: <FaBullhorn size={40} className="text-teal-600" />,
+			icon: <FaBullhorn size={40} className="text-red-600" />,
 		},
 		{
-			title: "International Biz-Network Access",
+			title: "International Biz Access",
 			description: "Expand your business reach to the USA and beyond.",
-			icon: <FaPlane size={40} className="text-green-600" />,
+			icon: <FaPlane size={40} className="text-red-600" />,
 		},
 		{
 			title: "Hello-Bizz Web Access",
 			description: "Connect globally with businesses through our platform.",
-			icon: <FaLaptop size={40} className="text-green-600" />,
+			icon: <FaLaptop size={40} className="text-red-600" />,
 		},
 	];
 

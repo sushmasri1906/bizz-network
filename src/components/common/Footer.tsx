@@ -1,37 +1,57 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
 	return (
 		<footer className="relative text-white">
 			{/* CTA Box - Positioned on Footer */}
-			<div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-[90%] max-w-3xl bg-red-600 text-white text-center py-8 rounded-2xl shadow-lg px-6 md:px-12">
-				<h2 className="text-2xl md:text-3xl font-bold mb-4">
-					Would you like to join <span className="text-white">Hello-Bizz?</span>
+			<motion.div
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				whileHover={{ scale: 1.05 }} // Enlarges on hover
+				transition={{ duration: 0.8, ease: "easeOut" }}
+				className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[80%] lg:w-[60%] max-w-4xl bg-red-600 text-white text-center py-5 md:py-6 rounded-xl shadow-lg px-4 md:px-8">
+				<h2 className="text-lg md:text-2xl font-bold mb-2 md:mb-3">
+					Ready to Elevate Your Business with{" "}
+					<span className="text-white">Biz-Network®?</span>
 				</h2>
+				<p className="text-sm md:text-base mb-3 md:mb-4">
+					Expand your network, unlock new opportunities, and build powerful
+					connections. Start your journey today!
+				</p>
 				<Link href="/join">
-					<button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full shadow-md transition duration-300 hover:bg-gray-200">
-						CLICK HERE NOW
-					</button>
+					<motion.button
+						whileHover={{ scale: 1.1 }} // Button enlarges more on hover
+						whileTap={{ scale: 0.95 }}
+						className="bg-white text-gray-900 font-semibold py-2 px-5 rounded-full shadow-md transition duration-300 hover:bg-gray-200">
+						Get Invited Now
+					</motion.button>
 				</Link>
-			</div>
+			</motion.div>
 
 			{/* Footer Content */}
 			<div className="bg-gray-900 text-gray-300 py-4 mt-12">
 				<div className="max-w-6xl mx-auto px-6 mt-36">
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8 }}
+						className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
 						{/* Company Info */}
-						<div>
-							<h2 className="text-xl font-bold text-white mb-3">Hello-Bizz</h2>
+						<motion.div whileHover={{ scale: 1.02 }}>
+							<h2 className="text-xl font-bold text-white mb-3">Biz-Network</h2>
 							<p className="text-sm leading-relaxed">
 								Connecting professionals and businesses for growth, powered by
-								Hello-Bizz B2B Network.
+								Biz-Network® B2B Network.
 							</p>
-						</div>
+						</motion.div>
 
 						{/* Quick Links */}
-						<div>
+						<motion.div whileHover={{ scale: 1.02 }}>
 							<h3 className="text-lg font-semibold text-white mb-3">
 								Quick Links
 							</h3>
@@ -46,17 +66,17 @@ const Footer = () => {
 										label: "Terms & Conditions",
 									},
 								].map(({ href, label }) => (
-									<li key={href}>
+									<motion.li whileHover={{ x: 5 }} key={href}>
 										<Link href={href} className="hover:text-red-500 transition">
 											{label}
 										</Link>
-									</li>
+									</motion.li>
 								))}
 							</ul>
-						</div>
+						</motion.div>
 
 						{/* Social Links */}
-						<div>
+						<motion.div whileHover={{ scale: 1.02 }}>
 							<h3 className="text-lg font-semibold text-white mb-3">
 								Follow Us
 							</h3>
@@ -78,28 +98,34 @@ const Footer = () => {
 										color: "hover:text-pink-500",
 									},
 								].map(({ href, icon, color }) => (
-									<Link
+									<motion.a
+										whileHover={{ scale: 1.2, rotate: 5 }}
+										whileTap={{ scale: 0.9 }}
 										key={href}
 										href={href}
 										target="_blank"
 										rel="noopener noreferrer"
 										className={`text-xl text-gray-400 transition ${color}`}>
 										{icon}
-									</Link>
+									</motion.a>
 								))}
 							</div>
-						</div>
-					</div>
+						</motion.div>
+					</motion.div>
 
 					{/* Copyright */}
-					<div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
+					<motion.div
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						transition={{ duration: 1 }}
+						className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
 						<p>
 							<span className="text-white">&copy;</span>{" "}
 							{new Date().getFullYear()}{" "}
-							<span className="text-white">Hello-Bizz</span>. All rights
+							<span className="text-white">Biz-Network®</span>. All rights
 							reserved.
 						</p>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</footer>
