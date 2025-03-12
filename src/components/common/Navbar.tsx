@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
-import { MdEmail } from "react-icons/md";
+import Image from "next/image";
 
 export default function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -13,11 +13,19 @@ export default function Navbar() {
 			<div className="max-w-7xl mx-auto flex justify-between items-center px-2 py-3">
 				<Link
 					href="/"
-					className="text-2xl font-bold text-red-600 no-underline mr-2 flex items-center">
-					Hello<span className="text-black">-Bizz</span>
-					<sup className="text-lg border border-gray-900 rounded-full w-5 h-5 flex items-center justify-center ml-1 align-middle">
-						™
-					</sup>
+					className="text-xl font-bold text-red-600 no-underline mr-2 flex items-center space-x-1">
+					<Image
+						src="https://res.cloudinary.com/dsq4uyqbb/image/upload/v1741682364/B_1_ftgxcr.png"
+						alt="Biz-Network Logo"
+						width={30}
+						height={20}
+					/>
+					<span>
+						Biz
+						<span className="text-black">
+							-Network<span className="font-bold text-md">®</span>
+						</span>
+					</span>
 				</Link>
 
 				<button
@@ -31,11 +39,15 @@ export default function Navbar() {
 						menuOpen ? "block" : "hidden"
 					}`}>
 					{[
-						{ name: "The HelloBizz Experience", href: "/experience" },
-						{ name: "Our Business Community", href: "/community" },
-						{ name: "Success Stories", href: "/success" },
-						{ name: "Opportunities", href: "/opportunities" },
-						{ name: "About Us", href: "/about" },
+						{ name: "Chapters", href: "/chapters" },
+						{ name: "Business Clubs", href: "/business-clubs" },
+
+						{ name: "Women Network", href: "/women-network" },
+						{ name: "Communal Wings", href: "/communal-wings" },
+						{ name: "Open Network", href: "/open-network" },
+						{ name: "B2C Events", href: "/b2c events" },
+						{ name: "Our Mission", href: "/our-mission" },
+						{ name: "Contact Us", href: "/contact" },
 					].map((link, index) => (
 						<li key={index} className="py-2 md:py-0">
 							<Link
@@ -48,15 +60,9 @@ export default function Navbar() {
 				</ul>
 
 				<div className="hidden md:flex items-center space-x-4 px-3">
-					<Link
-						href="mailto:support@bizzn.com"
-						className="flex items-center text-red-600 font-semibold no-underline">
-						<MdEmail size={20} className="mr-1" />
-						support@bizzn.com
-					</Link>
 					<Link href="/invite">
 						<button className="px-4 py-1 text-white bg-red-600 rounded-2xl transition-all duration-300 hover:bg-white hover:text-red-600 border-2 border-red-600">
-							Get Invited
+							Get access
 						</button>
 					</Link>
 				</div>
