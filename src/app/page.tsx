@@ -1,7 +1,7 @@
 // import Register from "@/components/pages/auth/register";
 
 // import Login from "@/components/pages/auth/login";
-// import Homepage from "@/components/Home/Homepage";
+import Homepage from "@/components/Home/Homepage";
 // import ForgotPassword from "@/components/pages/auth/forgot";
 // import ResetPassword from "@/components/pages/auth/reset";
 // import React from "react";
@@ -16,7 +16,7 @@ function page() {
 	return (
 		<>
 			{/* home */}
-			{/* <Homepage /> */}
+			<Homepage />
 			{/* <Register /> */}
 			{/* <Login /> */}
 			{/* <AdminDashboard />

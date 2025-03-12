@@ -14,9 +14,8 @@ export default function Hero() {
 			{/* Content */}
 			<div className="relative z-10 max-w-3xl px-6">
 				{/* Headline */}
-				<h1 className="text-4xl md:text-6xl font-bold leading-tight">
-					Stronger Together.{" "}
-					<span className="text-red-600">Smarter Business.</span>
+				<h1 className="text-xl md:text-4xl font-bold leading-tight">
+					<span className="text-white">Connect Collaborate Grow</span>
 				</h1>
 
 				{/* Subheading */}
@@ -28,7 +27,7 @@ export default function Hero() {
 				<div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
 					<Link href="/invite">
 						<button className="px-12 py-3 bg-red-600 text-white font-medium rounded-2xl transition-all duration-300 hover:bg-red-700">
-							Get Invited
+							Get Access
 						</button>
 					</Link>
 					<Link href="/meeting">
@@ -41,7 +40,7 @@ export default function Hero() {
 				{/* Quick Stats */}
 				<div className="mt-8 flex flex-wrap justify-center gap-6 text-sm opacity-80">
 					<div>
-						🌍 <span className="font-semibold">100,000+</span> Business
+						🌍 <span className="font-semibold">2000+</span> Business
 						Professionals
 					</div>
 					<div>
@@ -49,7 +48,8 @@ export default function Hero() {
 						Business
 					</div>
 					<div>
-						📅 <span className="font-semibold">Global</span> Networking Events
+						📅 <span className="font-semibold">Global</span> Networking Events –
+						India & USA
 					</div>
 				</div>
 			</div>
