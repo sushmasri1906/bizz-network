@@ -151,7 +151,7 @@ export default function Services() {
 								{plan.features.map((feature, i) => (
 									<li
 										key={i}
-										className="flex items-center gap-2 justify-center">
+										className="flex items-center gap-2 justify-start ml-4">
 										<FaCheckCircle className="text-green-600" /> {feature}
 									</li>
 								))}

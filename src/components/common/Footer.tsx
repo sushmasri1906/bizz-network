@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
 	return (
-		<footer className="relative text-white">
+		<footer className="relative text-white mt-30">
 			{/* Footer Content */}
 			<div className="bg-gray-900 text-gray-300 py-4">
 				<div className="max-w-6xl mx-auto px-6 mt-4">
