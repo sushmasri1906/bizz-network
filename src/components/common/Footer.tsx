@@ -8,34 +8,9 @@ import { motion } from "framer-motion";
 const Footer = () => {
 	return (
 		<footer className="relative text-white">
-			{/* CTA Box - Positioned on Footer */}
-			<motion.div
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				whileHover={{ scale: 1.05 }} // Enlarges on hover
-				transition={{ duration: 0.8, ease: "easeOut" }}
-				className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[80%] lg:w-[60%] max-w-4xl bg-red-600 text-white text-center py-5 md:py-6 rounded-xl shadow-lg px-4 md:px-8">
-				<h2 className="text-lg md:text-2xl font-bold mb-2 md:mb-3">
-					Ready to Elevate Your Business with{" "}
-					<span className="text-white">Biz-Network®?</span>
-				</h2>
-				<p className="text-sm md:text-base mb-3 md:mb-4">
-					Expand your network, unlock new opportunities, and build powerful
-					connections. Start your journey today!
-				</p>
-				<Link href="/join">
-					<motion.button
-						whileHover={{ scale: 1.1 }} // Button enlarges more on hover
-						whileTap={{ scale: 0.95 }}
-						className="bg-white text-gray-900 font-semibold py-2 px-5 rounded-full shadow-md transition duration-300 hover:bg-gray-200">
-						Get Invited Now
-					</motion.button>
-				</Link>
-			</motion.div>
-
 			{/* Footer Content */}
-			<div className="bg-gray-900 text-gray-300 py-4 mt-12">
-				<div className="max-w-6xl mx-auto px-6 mt-36">
+			<div className="bg-gray-900 text-gray-300 py-4">
+				<div className="max-w-6xl mx-auto px-6 mt-4">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						whileInView={{ opacity: 1, y: 0 }}
