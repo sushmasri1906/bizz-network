@@ -19,11 +19,13 @@ export default function Navbar() {
 						alt="Biz-Network Logo"
 						width={30}
 						height={20}
+						style={{ width: "auto", height: "auto" }}
 					/>
+
 					<span>
 						Biz
-						<span className="text-black">
-							-Network<span className="font-bold text-md">®</span>
+						<span className="text-black inline-flex items-center">
+							-Network<span className="text-sm align-top">®</span>
 						</span>
 					</span>
 				</Link>
@@ -41,11 +43,6 @@ export default function Navbar() {
 					{[
 						{ name: "Chapters", href: "/chapters" },
 						{ name: "Business Clubs", href: "/business-clubs" },
-
-						{ name: "Women Network", href: "/women-network" },
-						{ name: "Communal Wings", href: "/communal-wings" },
-						{ name: "Open Network", href: "/open-network" },
-						{ name: "B2C Events", href: "/b2c events" },
 						{ name: "Our Mission", href: "/our-mission" },
 						{ name: "Contact Us", href: "/contact" },
 					].map((link, index) => (
