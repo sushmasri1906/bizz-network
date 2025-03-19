@@ -14,7 +14,8 @@ CREATE TYPE "ReferralStatus" AS ENUM ('PENDING', 'ACCEPTED', 'REJECTED', 'COMPLE
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "password" TEXT,
+    "emailVerified" BOOLEAN NOT NULL DEFAULT false,
+    "password" TEXT NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'MEMBER',
     "personalDetailsId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -23,15 +24,38 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
+CREATE TABLE "GmailVerificationCode" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "GmailVerificationCode_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "PersonalDetails" (
     "id" TEXT NOT NULL,
     "firstName" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
+    "phoneVerified" BOOLEAN NOT NULL DEFAULT false,
     "address" JSONB,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "PersonalDetails_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PhoneVerificationCode" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "PhoneVerificationCode_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -259,7 +283,13 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE UNIQUE INDEX "User_personalDetailsId_key" ON "User"("personalDetailsId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "GmailVerificationCode_email_key" ON "GmailVerificationCode"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "PersonalDetails_userId_key" ON "PersonalDetails"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "PhoneVerificationCode_email_key" ON "PhoneVerificationCode"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "BusinessDetails_panNumber_key" ON "BusinessDetails"("panNumber");

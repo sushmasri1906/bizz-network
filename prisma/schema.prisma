@@ -46,7 +46,8 @@ enum ReferralStatus {
 model User {
   id              String          @id @default(uuid())
   email           String          @unique
-  password        String?
+  emailVerified   Boolean         @default(false)
+  password        String
   role            Role            @default(MEMBER)
   personalDetails PersonalDetails @relation(fields: [personalDetailsId], references: [id])
   personalDetailsId String @unique
@@ -70,14 +71,31 @@ model User {
   createdAt       DateTime        @default(now())
 }
 
+model GmailVerificationCode {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
 model PersonalDetails {
   id          String   @id @default(uuid())
   firstName   String
   lastName    String
   phone       String
+  phoneVerified Boolean @default(false) // New field for phone verification
   address     Json?    // { street, city, state, zip }
   userId      String   @unique
   user        User?
+}
+
+model PhoneVerificationCode {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
 }
 
 model BusinessDetails {
