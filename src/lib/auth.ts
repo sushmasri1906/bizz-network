@@ -14,6 +14,11 @@ export const authOptions: NextAuthOptions = {
 	],
 	callbacks: {
 		async signIn({ user }) {
+			console.log(
+				process.env.GOOGLE_CLIENT_ID!,
+				process.env.GOOGLE_CLIENT_SECRET!,
+				"env var"
+			);
 			// Check if user already exists in the database
 			const existingUser = await prisma.user.findUnique({
 				where: {
@@ -23,7 +28,7 @@ export const authOptions: NextAuthOptions = {
 
 			// If user doesn't exist, create a new record
 			if (!existingUser) {
-				return "/signup";
+				return "/register";
 			}
 
 			return true; // Returning true allows the sign-in process to continue
