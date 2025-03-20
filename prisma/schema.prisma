@@ -49,8 +49,8 @@ model User {
   emailVerified   Boolean         @default(false)
   password        String
   role            Role            @default(MEMBER)
-  personalDetails PersonalDetails @relation(fields: [personalDetailsId], references: [id])
-  personalDetailsId String @unique
+  personalDetails PersonalDetails? @relation(fields: [personalDetailsId], references: [id])
+  personalDetailsId String? @unique
   businessDetails BusinessDetails?
   memberships     Membership[]
   sentReferrals   Referral[]      @relation("SentReferrals")
