@@ -1,10 +1,11 @@
 import "next-auth";
-
+import { Role } from "@prisma/client";
 declare module "next-auth" {
 	interface User {
-		id: number;
+		id: string;
 		email: string; // Explicitly define email as always available
-		name?: string;
+		emailVerified: boolean;
+		role: Role;
 	}
 
 	interface Session {

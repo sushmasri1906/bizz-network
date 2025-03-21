@@ -57,7 +57,7 @@ export default function Navbar() {
 				</ul>
 
 				<div className="hidden md:flex items-center space-x-4 px-3">
-					<Link href="/invite">
+					<Link href="/register">
 						<button className="px-4 py-1 text-white bg-red-600 rounded-2xl transition-all duration-300 hover:bg-white hover:text-red-600 border-2 border-red-600">
 							Get access
 						</button>
