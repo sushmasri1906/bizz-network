@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 		const token = jwt.sign({ email, otp }, OTP_SECRET, { expiresIn: "10m" });
 
 		// Send OTP email
-		console.log(await sendVerificationEmail(email, otp));
+		await sendVerificationEmail(email, otp);
 
 		return NextResponse.json({ success: true, message: "OTP sent!", token });
 	} catch (error) {

@@ -1,4 +1,4 @@
-import PersonalDetails from "@/components/auth/Register/PersonalDetails";
+import PersonalDetails from "@/components/auth/Register/EditPersonalDetails";
 import React from "react";
 
 const page = () => {

@@ -13,10 +13,10 @@ interface WithRoleProps {
 const WithRole = ({ allowedRoles, children }: WithRoleProps) => {
 	const { data: session, status } = useSession();
 	const router = useRouter();
-
 	useEffect(() => {
 		if (status === "loading") return; // Wait for session to load
 		if (!session || !allowedRoles.includes(session.user.role)) {
+			console.log(session?.user.id);
 			router.replace("/unauthorized"); // Redirect unauthorized users
 		}
 	}, [session, status, router, allowedRoles]);

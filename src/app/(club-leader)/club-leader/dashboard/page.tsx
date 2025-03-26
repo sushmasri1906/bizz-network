@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-	return <div>Chapter leader dashboard</div>;
+	return <div>Club leader dashboard</div>;
 };
 
 export default page;

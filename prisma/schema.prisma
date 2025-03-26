@@ -49,8 +49,7 @@ model User {
   emailVerified   Boolean         @default(false)
   password        String
   role            Role            @default(MEMBER)
-  personalDetails PersonalDetails? @relation(fields: [personalDetailsId], references: [id])
-  personalDetailsId String? @unique
+  personalDetails PersonalDetails? 
   businessDetails BusinessDetails?
   memberships     Membership[]
   sentReferrals   Referral[]      @relation("SentReferrals")
@@ -86,8 +85,9 @@ model PersonalDetails {
   phone       String
   phoneVerified Boolean @default(false) // New field for phone verification
   address     Json?    // { street, city, state, zip }
+  user        User     @relation(fields: [userId], references: [id])
   userId      String   @unique
-  user        User?
+
 }
 
 model PhoneVerificationCode {

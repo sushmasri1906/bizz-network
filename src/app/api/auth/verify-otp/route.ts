@@ -28,15 +28,12 @@ export async function POST(req: Request) {
 
 		// Hash the password before storing it
 		const hashedPassword = await bcrypt.hash(password, 10); // 10 is the salt rounds
-		console.log(hashedPassword);
 		// Upsert user (update if exists, otherwise create)
-		const mail = await prisma.user.upsert({
+		await prisma.user.upsert({
 			where: { email },
 			update: { emailVerified: true, password: hashedPassword },
 			create: { email, emailVerified: true, password: hashedPassword },
 		});
-
-		console.log(mail);
 
 		return NextResponse.json({ success: true, message: "Email verified!" });
 	} catch (error) {

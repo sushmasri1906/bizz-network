@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 
 const layout = ({ children }: { children: ReactNode }) => {
 	return (
-		<WithRole allowedRoles={[Role.CHAPTER_LEADER]}>
+		<WithRole allowedRoles={[Role.CLUB_LEADER]}>
 			<div>{children}</div>
 		</WithRole>
 	);

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
+import ProfileOrSignin from "../auth/ProfileOrSignin";
 
 export default function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -55,13 +56,8 @@ export default function Navbar() {
 						</li>
 					))}
 				</ul>
-
 				<div className="hidden md:flex items-center space-x-4 px-3">
-					<Link href="/register">
-						<button className="px-4 py-1 text-white bg-red-600 rounded-2xl transition-all duration-300 hover:bg-white hover:text-red-600 border-2 border-red-600">
-							Get access
-						</button>
-					</Link>
+					<ProfileOrSignin />
 				</div>
 			</div>
 		</nav>

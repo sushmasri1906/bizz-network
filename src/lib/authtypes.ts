@@ -6,6 +6,8 @@ declare module "next-auth" {
 		email: string; // Explicitly define email as always available
 		emailVerified: boolean;
 		role: Role;
+		personalDetailsId: string | null;
+		businessDetailsId: string | null;
 	}
 
 	interface Session {
