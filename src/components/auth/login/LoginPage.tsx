@@ -22,6 +22,7 @@ export default function LoginPage() {
 			if (session.user.personalDetailsId === null)
 				router.push("/register/personal-details");
 			else if (session.user.businessDetailsId === null) {
+				console.log(session.user.businessDetailsId);
 				console.log("businessdetails if of login page");
 				router.push("/register/business-details");
 			} else

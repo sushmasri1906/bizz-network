@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 
 const businessDetailsSchema = z.object({
 	businessName: z.string().min(1, "Business name is required"),
@@ -13,8 +15,14 @@ const businessDetailsSchema = z.object({
 
 export async function POST(req: NextRequest) {
 	try {
+		const session = await getServerSession(authOptions);
+		if (!session || !session.user) {
+			return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+		}
+
+		const { id } = session.user as { id: string };
 		const body = await req.json();
-		const validatedData = businessDetailsSchema.parse(body);
+		const validatedData = businessDetailsSchema.parse({ ...body, userId: id });
 
 		const businessDetails = await prisma.businessDetails.create({
 			data: validatedData,

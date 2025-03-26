@@ -108,11 +108,12 @@ export const authOptions: NextAuthOptions = {
 						},
 					},
 				});
-
+				console.log(res);
 				token.id = res?.id;
 				token.role = res?.role;
 				token.personalDetailsId = res?.personalDetails?.id || null;
 				token.businessDetailsId = res?.businessDetails?.id || null;
+				console.log(token);
 			}
 			return token;
 		},
@@ -124,8 +125,9 @@ export const authOptions: NextAuthOptions = {
 				session.user.personalDetailsId = token.personalDetailsId as
 					| string
 					| null;
-				session.user.businessDetailsId =
-					(token.businessDetails as string) || null;
+				session.user.businessDetailsId = token.businessDetailsId as
+					| string
+					| null;
 			}
 			return session;
 		},
