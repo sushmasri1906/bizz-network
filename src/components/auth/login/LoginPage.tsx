@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import { Role } from "@prisma/client";
+import Link from "next/link";
 
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
@@ -18,12 +19,9 @@ export default function LoginPage() {
 	const { data: session } = useSession();
 	useEffect(() => {
 		if (session && session.user) {
-			console.log("inside if of login page");
 			if (session.user.personalDetailsId === null)
 				router.push("/register/personal-details");
 			else if (session.user.businessDetailsId === null) {
-				console.log(session.user.businessDetailsId);
-				console.log("businessdetails if of login page");
 				router.push("/register/business-details");
 			} else
 				switch (session.user.role) {
@@ -39,10 +37,15 @@ export default function LoginPage() {
 					case Role.MEMBER:
 						router.push("/dashboard");
 						break;
+					default:
+						logOut();
+						break;
 				}
 		}
 	});
-
+	const logOut = async () => {
+		await signOut({ redirect: false });
+	};
 	const handleGoogleSignIn = async () => {
 		setLoading(true);
 		try {
@@ -131,6 +134,12 @@ export default function LoginPage() {
 						{loading ? "Signing in..." : "Sign In"}
 					</button>
 				</form>
+				<p className=" text-sm">
+					dont have an account?{" "}
+					<Link className="text-red-600" href="/register">
+						Register
+					</Link>
+				</p>
 			</div>
 		</div>
 	);

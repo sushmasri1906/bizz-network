@@ -49,6 +49,8 @@ model User {
   emailVerified   Boolean         @default(false)
   password        String
   role            Role            @default(MEMBER)
+  deleted         Boolean         @default(false)
+  deactivated     Boolean         @default(false)
   personalDetails PersonalDetails? 
   businessDetails BusinessDetails?
   memberships     Membership[]
@@ -145,7 +147,7 @@ model Membership {
   user        User          @relation(fields: [userId], references: [id])
   userId      String
   startDate   DateTime
-  endDate     DateTime
+  endDate     DateTime?
   payments    Payment[]
   createdAt   DateTime      @default(now())
 }

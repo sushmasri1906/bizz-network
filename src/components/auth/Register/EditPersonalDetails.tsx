@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const personalDetailsSchema = z.object({
 	firstName: z.string().min(1, "First name is required"),
@@ -26,13 +27,23 @@ export default function EditPersonalDetails() {
 		formState: { errors },
 	} = useForm({ resolver: zodResolver(personalDetailsSchema) });
 	const router = useRouter();
+	const { data: session, update } = useSession();
 
 	const handleFormSubmit = async (
 		data: z.infer<typeof personalDetailsSchema>
 	) => {
 		try {
-			console.log("Submitted Data:", data);
-			await axios.post("/api/register/personal-details", data);
+			const personalDetails = await axios.post(
+				"/api/register/personal-details",
+				data
+			);
+			console.log("Personal Details:", personalDetails);
+			await update({
+				user: {
+					...session?.user,
+					personalDetailsId: personalDetails.data.id, // Assuming API returns `id`
+				},
+			});
 			router.push("/register/business-details");
 		} catch (error) {
 			console.error("Error submitting form:", error);

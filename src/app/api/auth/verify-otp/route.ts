@@ -32,7 +32,22 @@ export async function POST(req: Request) {
 		await prisma.user.upsert({
 			where: { email },
 			update: { emailVerified: true, password: hashedPassword },
-			create: { email, emailVerified: true, password: hashedPassword },
+			create: {
+				email,
+				emailVerified: true,
+				password: hashedPassword,
+				memberships: {
+					create: [
+						{
+							tier: "FREE", // Default membership tier
+							startDate: new Date(),
+							endDate: new Date(
+								new Date().setFullYear(new Date().getFullYear() + 1)
+							), // 1-year membership
+						},
+					],
+				},
+			},
 		});
 
 		return NextResponse.json({ success: true, message: "Email verified!" });

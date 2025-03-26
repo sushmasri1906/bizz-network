@@ -17,7 +17,8 @@ CREATE TABLE "User" (
     "emailVerified" BOOLEAN NOT NULL DEFAULT false,
     "password" TEXT NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'MEMBER',
-    "personalDetailsId" TEXT NOT NULL,
+    "deleted" BOOLEAN NOT NULL DEFAULT false,
+    "deactivated" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
@@ -98,7 +99,7 @@ CREATE TABLE "Membership" (
     "tier" "MembershipTier" NOT NULL DEFAULT 'FREE',
     "userId" TEXT NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
-    "endDate" TIMESTAMP(3) NOT NULL,
+    "endDate" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Membership_pkey" PRIMARY KEY ("id")
@@ -280,9 +281,6 @@ CREATE TABLE "_ClubMembers" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_personalDetailsId_key" ON "User"("personalDetailsId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "GmailVerificationCode_email_key" ON "GmailVerificationCode"("email");
 
 -- CreateIndex
@@ -313,7 +311,7 @@ CREATE INDEX "_ChapterLeaders_B_index" ON "_ChapterLeaders"("B");
 CREATE INDEX "_ClubMembers_B_index" ON "_ClubMembers"("B");
 
 -- AddForeignKey
-ALTER TABLE "User" ADD CONSTRAINT "User_personalDetailsId_fkey" FOREIGN KEY ("personalDetailsId") REFERENCES "PersonalDetails"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "PersonalDetails" ADD CONSTRAINT "PersonalDetails_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "BusinessDetails" ADD CONSTRAINT "BusinessDetails_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
