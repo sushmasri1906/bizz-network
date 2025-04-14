@@ -100,6 +100,15 @@ const Footer = () => {
 							<span className="text-white">Biz-Network®</span>. All rights
 							reserved.
 						</p>
+						<p className="mt-2">
+							Developed by{" "}
+							<Link
+								href="https://www.hsdev.in/"
+								target="_blank"
+								className="text-red-500 hover:text-red-400 ">
+								hsdev.in
+							</Link>
+						</p>
 					</motion.div>
 				</div>
 			</div>
